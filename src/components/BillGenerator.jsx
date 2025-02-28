@@ -35,6 +35,8 @@ function BillGenerator() {
   const dispatch = useDispatch();
   const billRef = useRef(null);
   const currentBill = useSelector((state) => state.bills.currentBill);
+  const user = useSelector((state) => state.auth.user);
+
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleInputChange = (e) => {
@@ -78,9 +80,9 @@ function BillGenerator() {
     pdf.setFontSize(12);
 
     // Add company info (if needed)
-    pdf.text("Your Company Name", margin, margin + 10);
-    pdf.text("Company Address", margin, margin + 15);
-    pdf.text("contact@company.com", margin, margin + 20);
+    pdf.text("Bill Management Services", margin, margin + 10);
+    pdf.text("Noida , sector-15 ,Up", margin, margin + 15);
+    pdf.text(`${user.email}`, margin, margin + 20);
 
     // Add customer info
     pdf.setFontSize(14);
@@ -96,7 +98,7 @@ function BillGenerator() {
     // Add invoice details
     pdf.setFont("helvetica", "bold");
     pdf.text(
-      `Invoice Date: ${currentBill.billingDate}`,
+      `Invoice Date: ${currentBill.billingDate.split('-').reverse().join('-')}`,
       pageWidth - margin,
       margin + 30,
       { align: "right" }

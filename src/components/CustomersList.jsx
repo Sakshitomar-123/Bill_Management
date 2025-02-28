@@ -35,7 +35,7 @@ function CustomersList() {
                 <tr key={customer.id}>
                   <Td>{customer.customerName}</Td>
                   <Td>{customer.productQuantity}</Td>
-                  <Td>{customer.billingDate}</Td>
+                  <Td>{customer.billingDate.split('-').reverse().join('-')}</Td>
                   <Td>{customer.customerMobile}</Td>
                   <Td>{customer.customerAddress}</Td>
                   <Td>${customer.billingPrice.toFixed(2)}</Td>
