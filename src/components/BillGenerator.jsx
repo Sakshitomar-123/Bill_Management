@@ -104,7 +104,7 @@ function BillGenerator() {
       { align: "right" }
     );
     pdf.text(
-      `Invoice #: ${new Date().getTime()}`,
+      `Invoice Id: ${new Date().getTime()}`,
       pageWidth - margin,
       margin + 37,
       { align: "right" }
@@ -127,7 +127,7 @@ function BillGenerator() {
     });
 
     // Draw table header
-    pdf.setFillColor(240, 240, 240);
+    pdf.setFillColor(124, 204, 124); // Medium green
     pdf.rect(margin, tableStartY, pageWidth - margin * 2, 8, "F");
     pdf.setFont("helvetica", "bold");
 
